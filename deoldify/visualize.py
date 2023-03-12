@@ -99,6 +99,7 @@ class ModelImageVisualizer:
         compare: bool = False,
         post_process: bool = True,
         watermarked: bool = True,
+        plot: bool = False,
     ) -> Path:
         path = Path(path)
         result = self.get_transformed_image(
@@ -109,7 +110,7 @@ class ModelImageVisualizer:
             self._plot_comparison(
                 figsize, render_factor, display_render_factor, orig, result
             )
-        else:
+        elif plot:
             self._plot_solo(figsize, render_factor, display_render_factor, result)
 
         return self._save_result_image(path, result)
